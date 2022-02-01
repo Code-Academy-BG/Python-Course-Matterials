@@ -3,10 +3,10 @@ Within this module you'll find numerical data types that we'll be talking about.
 and use the examples the way you like.
 """
 
-### Integer ###
 from decimal import Decimal
 
-bags_count = 15
+
+bags_count = 15  # integer
 print(bags_count)
 # >>> 15
 
@@ -45,18 +45,18 @@ print(shirts_count)
     Sames operators are applicable to Float as well.
 """
 
-base_coef = 4.5
+base_coef = 4.5  # float
 coef_multiplier = 2
 print(base_coef * coef_multiplier)
 # >>> 9.0
 
-print(base_coef * coef_multiplier == 9.0)  ### Expect True?
+print(base_coef * coef_multiplier == 9.0)  # Expect True?
 # >>> True it is
 
 print(base_coef * 3 == 13.5)  # Expect True?
 # >>> Nope, False it is, due to the floating point unit *** Check this out
 
-shipping_price = Decimal('6.5')
+shipping_price = Decimal('6.5')  # Decimal
 print(shipping_price)
-print(shipping_price * 3 == Decimal('19.5'))  ### Expect True?
+print(shipping_price * 3 == Decimal('19.5'))  # Expect True?
 # >>> True it is

@@ -1,3 +1,8 @@
+import csv
+import os
+
+from settings.testing import INPUT_DIR
+
 fruits = ['apple', 'banana', 'cherry']
 for fruit in fruits:
     print(fruits)
@@ -15,3 +20,10 @@ for fruit in fruits:
     else:
         print(fruit)
         # break This would cause an immediate exit from the loop
+
+
+with open(os.path.join(INPUT_DIR, 'students_data.csv'), 'r') as source:
+    reader = csv.reader(source)
+
+    for row in reader:
+        print(row)

@@ -61,6 +61,7 @@ age_module_scope = 31
 print('Module scope: ', age_module_scope)
 
 
+# Scope test
 def scope_test():
     var_one = 5
     var_two = 6
@@ -79,3 +80,40 @@ def scope_test():
 
 
 scope_test()
+
+
+# function assigned as a value of a variable
+def add_two(x):
+    x += 2
+    return x
+
+
+variable_add = add_two
+
+print(variable_add(5))
+
+# Not recommended
+variable_add = lambda x: x + 2
+print(variable_add(5))
+
+
+students_data = [
+    {
+        'name': 'Tosho',
+        'age': 25,
+        'discipline': 'mathematics',
+    },
+    {
+        'name': 'Gosho',
+        'age': 27,
+        'discipline': 'IT',
+    },
+    {
+        'name': 'Ivan',
+        'age': 29,
+        'discipline': 'informatics',
+    }
+]
+
+students_data.sort(key=lambda data: data['discipline'])
+print(students_data)

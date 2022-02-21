@@ -19,6 +19,7 @@ can hold the triangle.
     4.1. Builder must be able to know a Square's state
     4.2. Builder must be able to process a new triangle
     4.3. Builder must be able to receive and process signals from a Square.
+    4.4. Builder can build up to 10 triangles!
 
 
 Provide your solution as a package:

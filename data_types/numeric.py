@@ -4,10 +4,15 @@ and use the examples the way you like.
 """
 
 from decimal import Decimal
+import fractions
+import math
 
 
 bags_count = 15  # integer
 print(bags_count)
+
+bags_count += 2
+print("bags_count: ", bags_count)
 # >>> 15
 
 shirts_count = 10
@@ -60,3 +65,9 @@ shipping_price = Decimal('6.5')  # Decimal
 print(shipping_price)
 print(shipping_price * 3 == Decimal('19.5'))  # Expect True?
 # >>> True it is
+
+complex_number = 3j
+print(complex_number)
+
+fraction_half = fractions.Fraction(1, 2)
+print(fraction_half)

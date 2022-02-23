@@ -86,3 +86,53 @@ def get_titled_string(sentence):
     :return: Return a titled version of the sentence
     """
     pass
+
+
+def get_number_sum(array, target_sum):
+    """
+    Example:
+    array = [3, 5, -4, 8, 11, 1, -1, 6]
+    target_sum = 10
+
+    result = [-1, 11]
+
+    :param array: Non-empty array of integers
+    :param target_sum: integer
+    :return: new array holding 2 numbers which sum = target_sum. If no such numbers, return []
+    """
+
+    pass
+
+
+def get_is_valid_subsequence(array, sequence):
+    """
+    Given two non-empty arrays of integers, finish the function by adding code that determines if
+    the second array is a subsequence of the first one.
+
+    Subsequence is not mandatory adjacent in the array, but following the same order.
+    Example:
+    array = [5, 1, 22, 25, 6, -1, 8, 10]
+    sequence = [1, 6, -1, 10]
+    result: True
+
+    :param array:
+    :param sequence:
+    :return: bool
+    """
+
+    pass
+
+
+def get_is_palindrome(string):
+    """
+    Finish the function by adding code that returns a boolean with palindrome check.
+    A string is palindrome if it is written the same forward and backward. Single char string is
+    a palindrome string.
+
+    Example:
+    string = 'abcdcba'
+    result: True
+
+    :param string:
+    :return: bool
+    """

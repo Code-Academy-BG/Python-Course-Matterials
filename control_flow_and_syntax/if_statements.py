@@ -2,10 +2,12 @@ if True:
     print('Me')
 
 
-if True:
- # This one would raise an Indentation error, because line 7 indentation is different from line 6's
- print('Me')
-  # print('Me')
+# if True:
+#     name = "CodeAcademy"
+#   print('Me')
+
+# This one would raise an Indentation error, because line 7 indentation is different from line 6's
+# print('Me')
 
 
 age = 18
@@ -38,3 +40,6 @@ if True:
         pass
 else:
     pass
+
+
+is_club_allowed = "Yes" if age > 25 else "No"

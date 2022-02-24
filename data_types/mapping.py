@@ -187,3 +187,14 @@ print(default_dict_example_two)
 
 counter_example = Counter('CodeAcademyBG')
 print(counter_example)
+
+
+students_info_tuples = {
+    ("CodeAcademy", 8): "Sofia",
+    ("Name", 25): "Sofia",
+    ("Name2", 17): "Sofia",
+    ("Name3", 36): "Sofia",
+}
+
+for (name, age), city in students_info_tuples.items():
+    print(name, age, city)

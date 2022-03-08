@@ -8,7 +8,12 @@ def power(x, y):
     return result
 
 
-print(power(2, 3))
+z = power(9, 2)
+zz = power(x=9, y=2)
+zzz = power(y=2, x=9)
+# print(z)
+# print(zz)
+# print(zzz)
 
 
 def power_v2(x, y=2):
@@ -21,23 +26,24 @@ def power_v2(x, y=2):
     return result
 
 
-print(power(2, y=3))
-print(power(y=3, x=2))
+# print(power(2, y=3))
+# print(power(y=3, x=2))
 # print(power(y=3, 2))
 
 
-def users_list(main_user, *users, main_user_age=None, **users_options):
+#
+def users_list(main_user, *users, main_user_age=None, main_user_city="Sofia", **users_options):
     print(main_user, main_user_age)
     for user in users:
-        print(user, users_options.get(user))
+        print(user, users_options[user])
 
 
-users_list(
-    'User1',
-    *[f'User{x}' for x in range(19)],
-    main_user_age=25,
-    **{f'User{x}': (x+1)*19 for x in range(19)},
-)
+# users_list(
+#     'User1',
+#     *[f'User{x}' for x in range(19)],
+#     main_user_age=25,
+#     **{f'User{x}': (x+1)*19 for x in range(19)},
+# )
 
 
 # Example of using mutable data types as function parameters
@@ -62,6 +68,9 @@ print('Module scope: ', age_module_scope)
 
 
 # Scope test
+age_module_scope = 31
+
+
 def scope_test():
     var_one = 5
     var_two = 6
@@ -79,8 +88,7 @@ def scope_test():
     print('Outer scope: ', var_one, var_two, ages, age_module_scope)
 
 
-scope_test()
-
+# scope_test()
 
 # function assigned as a value of a variable
 def add_two(x):
@@ -90,11 +98,11 @@ def add_two(x):
 
 variable_add = add_two
 
-print(variable_add(5))
+# print(variable_add(5))
 
 # Not recommended
 variable_add = lambda x: x + 2
-print(variable_add(5))
+# print(variable_add(5))
 
 
 students_data = [
@@ -116,4 +124,47 @@ students_data = [
 ]
 
 students_data.sort(key=lambda data: data['discipline'])
-print(students_data)
+# print(students_data)
+
+
+def mutate_list(name: str, names=[]):
+    names.append(name)
+    return names
+
+
+def func1():
+    x = 5
+
+
+def func2():
+    global x
+    x = 9
+
+# func1()
+# func2()
+# print(x)
+
+
+def divide_by_five(x):
+    return x / 5
+
+
+test_dict = {"add_two": add_two, "divide_by_5": divide_by_five}
+print("From dict call: ", test_dict["add_two"](5))
+print("From dict call: ", test_dict["divide_by_5"](30))
+
+"""
+password_checker = [
+    check_length,
+    check_random,
+    check_strength,
+    ....
+]
+
+password = "random password"
+
+for check password_checker:
+    if not check(password):
+        print("Invalid password")
+        break
+"""

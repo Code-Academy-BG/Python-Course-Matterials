@@ -20,7 +20,7 @@ SCORE_TO_PASS = 80
 
 
 # The filename should be changeable as well.
-with open(os.path.join(INPUT_DIR, "students_exams.csv"), "w") as source:
+with open(os.path.join(INPUT_DIR, "students_exams.csv"), "w", newline="") as source:
     writer = csv.writer(source)
 
     writer.writerow(

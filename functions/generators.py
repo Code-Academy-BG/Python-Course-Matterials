@@ -1,3 +1,6 @@
+import random
+
+
 class Repeater:
     def __init__(self, value):
         self.value = value
@@ -44,6 +47,11 @@ def first_n(n):
         num += 1
 
 
+def endless_generator():
+    while True:
+        yield "CodeAcademy"
+
+
 def generate_squares(start, end):
     for x in range(start, end, 2):
         yield x
@@ -65,3 +73,33 @@ for negate_square in generate_negate(generate_squares(4, 22)):
 
 # for square in generate_from(4, 16):
 #     print(square)
+
+
+def chars():
+    for x in range(1, 9):
+        yield f"p{x}"
+
+
+def chars_multiplied(seq):
+    for c in seq:
+        yield c * 2
+
+
+def chars_reversed(seq):
+    for c in seq:
+        yield c[::-1]
+
+
+for c in chars_reversed(chars_multiplied(chars())):
+    print(c)
+
+
+def generate_students_info():
+    for e in range(1, 11):
+        for s in range(1, 281):
+            yield f"Student {s}", {
+                "student_name": f"Student {s}",
+                "exam": e,
+                "points": random.randint(random.choice([30, 40, 50]), 100),
+            }
+

@@ -93,7 +93,8 @@ def generate_initial_session_data(
                         e,
                         # Points should be also manageable
                         random.randint(
-                            random.choice(SCORES[discipline]["initial_scores"]), 100
+                            random.choice(SCORES[discipline]["initial_scores"]),
+                            100,
                         ),
                     ],
                 )
@@ -142,7 +143,8 @@ def notify_headmaster_about_retakes_count(students_data: dict):
 def _retake(data, exam, students_passed, retakes_data, discipline):
     for r_i in range(3):
         retake_score = random.randint(
-            random.choice(SCORES[discipline]["initial_scores"]), 100
+            random.choice(SCORES[discipline]["initial_scores"]),
+            100,
         )
         if data["exams"][exam] >= retake_score:
             continue

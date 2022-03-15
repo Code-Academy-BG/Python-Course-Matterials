@@ -1,4 +1,5 @@
 import random
+from itertools import tee
 
 
 class Repeater:
@@ -103,3 +104,11 @@ def generate_students_info():
                 "points": random.randint(random.choice([30, 40, 50]), 100),
             }
 
+
+a, b = tee(range(24))
+
+for x in a:
+    print(x)
+
+for y in b:
+    print(y)

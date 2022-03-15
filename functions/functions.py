@@ -1,3 +1,80 @@
+import itertools
+
+months = [10, 8, 5, 7, 12, 10, 5, 8, 15, 3, 4, 2]
+print(list(itertools.accumulate(months)))
+
+first_range = range(3)
+second_range = range(5)
+third_range = itertools.chain(first_range, second_range)
+
+
+def powerset(iterable):
+    return itertools.chain.from_iterable(
+        itertools.combinations(iterable, i)
+        for i in range(len(iterable) + 1)
+    )
+
+
+permutations = itertools.permutations(range(3), 2)
+for p in permutations:
+    print(p)
+
+
+students = [
+    {
+        "name": "Student 1",
+        "course": "Math",
+    },
+    {
+        "name": "Student 1",
+        "course": "Phy",
+    },
+    {
+        "name": "Student 1",
+        "course": "History",
+    },
+    {
+        "name": "Student 1",
+        "course": "C++",
+    },
+    {
+        "name": "Student 1",
+        "course": "Python",
+    },
+    {
+        "name": "Student 1",
+        "course": "Java",
+    },
+    {
+        "name": "Student 2",
+        "course": "Math",
+    },
+    {
+        "name": "Student 2",
+        "course": "Phy",
+    },
+    {
+        "name": "Student 2",
+        "course": "History",
+    },
+    {
+        "name": "Student 2",
+        "course": "C++",
+    },
+    {
+        "name": "Student 2",
+        "course": "Python",
+    },
+    {
+        "name": "Student 2",
+        "course": "Java",
+    }
+]
+
+for student, student_data in itertools.groupby(students, key=lambda item: item["name"]):
+    print(student, student_data)
+
+
 def power(x, y):
     """ Returns x times y. """
 

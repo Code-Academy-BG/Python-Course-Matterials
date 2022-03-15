@@ -12,6 +12,7 @@ the package / module we need in the deepest closure of our scope.
 import csv
 import math
 import os
+import typing
 
 from collections import OrderedDict, Counter, defaultdict, deque
 from decimal import Decimal

@@ -12,9 +12,10 @@ class C(A, B):
     pass
 
 
-class D(B, C):
+class D(C, B):
     pass
 
 
 d = D()
 d.method()
+print(D.mro())

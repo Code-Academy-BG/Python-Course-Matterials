@@ -1,0 +1,9 @@
+[flake8]
+max-line-length = 100
+exclude = .git,
+          .idea,
+          .pycharm_helpers,
+          __pycache__,
+          migrations,
+          venv,
+ignore = E126,B003,Q001,A003,W504,E704,Q000,W503,E203

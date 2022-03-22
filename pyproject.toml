@@ -1,0 +1,20 @@
+[tool.black]
+line-height = 100
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.idea
+  | \.pycharm_helpers
+  | \__pycache__
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''

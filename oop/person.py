@@ -42,5 +42,29 @@ class Person:
 # print(person_ani)
 
 
-person_pesho = Person.create_person("male", 31, 180, 75, "Pesho")
-print(person_pesho)
+# person_pesho = Person.create_person("male", 31, 180, 75, "Pesho")
+# print(person_pesho)
+
+
+class PersonBase:
+    """This is simple docstring of Person class."""
+
+    def __init__(self, gender, age, height, weight, name):
+        self.__gender = gender
+        self.age = age
+        self.height = height
+        self.weight = weight
+        self.name = name
+
+    def __str__(self):
+        return f"I am {self.name}"
+
+    @property
+    def gender(self):
+        return self.__gender
+
+
+alex = PersonBase("male", 26, 180, 85, "Alex")
+print(alex)
+print(alex.__doc__)
+print(alex.gender)

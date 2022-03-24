@@ -2,7 +2,7 @@ from oop.base import TimestampMixin
 from oop.person import Person, person_pesho
 
 
-class Student(TimestampMixin, Person):
+class Student(Person):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.occupation = "Student"
@@ -42,4 +42,4 @@ print(student_one.courses)
 person_pesho.custom_method()
 student_one.custom_method()
 
-print(student_one.created_at)
+# print(student_one.created_at)

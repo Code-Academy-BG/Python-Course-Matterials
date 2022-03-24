@@ -27,6 +27,10 @@ class Person:
     def gender(self):
         return self.__gender
 
+    @gender.setter
+    def gender(self, value):
+        raise TypeError('Gender value is unchangeable')
+
     @classmethod
     def create_person(cls, *args, **kwargs):
         # Do something
@@ -42,8 +46,8 @@ class Person:
 # print(person_ani)
 
 
-# person_pesho = Person.create_person("male", 31, 180, 75, "Pesho")
-# print(person_pesho)
+person_pesho = Person.create_person("male", 31, 180, 75, "Pesho")
+print(person_pesho)
 
 
 class PersonBase:
@@ -57,14 +61,24 @@ class PersonBase:
         self.name = name
 
     def __str__(self):
+        """__str__ is meant to return readable information"""
         return f"I am {self.name}"
+
+    def __repr__(self):
+        """
+        __repr__ on the other side is meant to return more representational information.
+        When you call an instance, and you expect some string output if __str__ is missing
+        the __repr__ will be tried to be called.
+        If __str__ exists it will be the one to use.
+        """
+        return f"PersonBase(name={self.name})"
 
     @property
     def gender(self):
         return self.__gender
 
 
-alex = PersonBase("male", 26, 180, 85, "Alex")
-print(alex)
-print(alex.__doc__)
-print(alex.gender)
+# alex = PersonBase("male", 26, 180, 85, "Alex")
+# print(alex)
+# print(alex.__doc__)
+# print(alex.gender)

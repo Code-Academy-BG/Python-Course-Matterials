@@ -27,7 +27,7 @@ import requests
 
 
 class RequestsHandler:
-    BASE_URL = "http://88c5-89-215-235-209.eu.ngrok.io"
+    BASE_URL = "http://4f8c-89-215-235-209.eu.ngrok.io"
     FILES_URL = "oop/api/orders/files"
     FILE_URL = "oop/api/orders/file"
 

@@ -10,6 +10,8 @@ class OrderDetailSerializer(serializers.Serializer):
 
 class OrdersSerializer(serializers.Serializer):
     order_id = serializers.SerializerMethodField()
+    status = serializers.IntegerField()
+    last_update_at = serializers.DateTimeField()
     details = serializers.SerializerMethodField()
 
     def get_order_id(self, obj):

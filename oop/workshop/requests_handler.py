@@ -22,12 +22,14 @@ Tips:
 - Think about the pagination data
 """
 from urllib.parse import urljoin
+import django.core.management.commands.runserver as runserver
 
 import requests
 
 
 class RequestsHandler:
-    BASE_URL = "http://4f8c-89-215-235-209.eu.ngrok.io"
+    cmd = runserver.Command()
+    BASE_URL = f"http://127.0.0.1:{cmd.default_port}"
     FILES_URL = "oop/api/orders/files"
     FILE_URL = "oop/api/orders/file"
 

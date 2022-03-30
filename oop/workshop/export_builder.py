@@ -9,10 +9,35 @@ class OrdersDataExportBuilder:
         self.fetched_data = data
         self.timespan_orders_holder = timespan_orders_holder
 
-    def export_as_csv(self, group_by):
-        pass
+    def __export_as_csv(self, group_by):
+        with open(
+                f"/home/petar/{group_by}_grouped_orders_data_timespan"
+                f"_{self.timespan_orders_holder.timespan}.csv", "w"
+        ) as output:
+            writer = csv.writer(output)
+            writer.writerow(["Orders count", self.timespan_orders_holder.orders_count])
+            writer.writerow([])
 
-    def export_as_xml(self, group_by):
+            for order_data in self.fetched_data:
+                writer.writerow([order_data["order_id"]])
+                for grouper, grouped_data in itertools.groupby(
+                        order_data["details"],
+                        key=lambda item: item[group_by],
+                ):
+                    writer.writerow(["", grouper])
+                    writer.writerow(["", "", "product", "qty", "tolocation"])
+                    for product in grouped_data:
+                        writer.writerow(
+                            [
+                                "",
+                                "",
+                                product["product"],
+                                product["qty"],
+                                product["tolocation"],
+                            ],
+                        )
+
+    def __export_as_xml(self, group_by):
         pass
 
     def export_grouped_by_location(self, format, group_by):
@@ -20,8 +45,8 @@ class OrdersDataExportBuilder:
             raise ValueError(f"Unknown grouping element: {group_by}")
 
         if format == "csv":
-            self.export_as_csv(group_by)
+            self.__export_as_csv(group_by)
         elif format == "xml":
-            self.export_as_xml(group_by)
+            self.__export_as_xml(group_by)
         else:
             raise ValueError(f"Unknown format: {format}")

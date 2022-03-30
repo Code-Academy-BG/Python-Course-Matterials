@@ -31,5 +31,24 @@ class RequestsHandler:
     FILES_URL = "oop/api/orders/files"
     FILE_URL = "oop/api/orders/file"
 
+    def get_files(self):
+        response = requests.get(urljoin(self.BASE_URL, self.FILES_URL), timeout=3)
+        response.raise_for_status()
+        return response.json()
 
+    def get_file(self, filename):
+        json = {
+            "file": filename,
+        }
+        response = requests.get(urljoin(self.BASE_URL, self.FILE_URL), timeout=3, json=json)
+        response.raise_for_status()
+
+        yield response.json()["results"]
+
+        next_page = response.json()["next"]
+        while next_page:
+            next_response = requests.get(next_page, timeout=3, json=json)
+            next_response.raise_for_status()
+            next_page = next_response.json()["next"]
+            yield next_response.json()["results"]
 

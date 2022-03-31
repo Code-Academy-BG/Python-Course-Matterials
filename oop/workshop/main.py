@@ -1,13 +1,24 @@
-from oop.workshop.orders_data import TimespanOrdersData
+import json
+
 from oop.workshop.requests_handler import RequestsHandler
 
 rq = RequestsHandler()
-files = rq.get_files()
+news_factors = rq.get_news_factors()
+print(json.dumps(news_factors, indent=4))
 
-timespan_handler = TimespanOrdersData(files[0])
-for results in rq.get_file(files[0]):
-    for order_data in results:
-        timespan_handler.process_data(order_data)
-
-orders_processor = timespan_handler.get_orders_processor()
-orders_processor.export_grouped_by_location("xml", "location")
+"""
+{
+    "frog_news": {
+        "weather": 90%,
+        "markets": 5%,
+    },
+    "wolf_news": {
+        "weather": 90%,
+        "markets": 5%,
+    },
+    "eagle_news": {
+        "weather": 90%,
+        "markets": 5%,
+    },
+}
+"""

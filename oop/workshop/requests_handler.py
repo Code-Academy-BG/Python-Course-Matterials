@@ -22,13 +22,12 @@ Tips:
 - Think about the pagination data
 """
 from urllib.parse import urljoin
-import django.core.management.commands.runserver as runserver
 
 import requests
+from bs4 import BeautifulSoup
 
 
 class RequestsHandler:
-    cmd = runserver.Command()
     BASE_URL = f"http://0.0.0.0:7300"
     FILES_URL = "oop/api/orders/files"
     FILE_URL = "oop/api/orders/file"
@@ -54,3 +53,22 @@ class RequestsHandler:
             next_page = next_response.json()["next"]
             yield next_response.json()["results"]
 
+    def get_news_content(self, news_ulr):
+        response = requests.get(urljoin(self.BASE_URL, news_ulr), timeout=3)
+        response.raise_for_status()
+        # if response.status_code == 200:
+        #     print(response.text)
+
+        parsed = BeautifulSoup(response.text, "html.parser")
+        factor_rates = {}
+        rates = parsed.findAll("span", attrs={"class": "rate"})
+        for r in rates:
+            factor_name = " ".join(r.parent.text.split(" ")[:-1])
+            factor_rates[factor_name] = r.text
+        return factor_rates
+
+    def get_news_factors(self):
+        news_factor_rates = {}
+        for url in ["/frog-news", "/wolf-news", "/eagle-news"]:
+            news_factor_rates[url[1:]] = self.get_news_content(url)
+        return news_factor_rates

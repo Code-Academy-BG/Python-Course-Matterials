@@ -8,10 +8,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from oop_exersice.serializers import OrdersSerializer
-from settings.testing import INPUT_DIR
+from django.conf import settings
 
-
-EXERSICE_DIR = os.path.join(INPUT_DIR, "orders_data")
+EXERSICE_DIR = os.path.join(settings.INPUT_DIR, "orders_data")
 
 
 class OrdersDBAPI(APIView):

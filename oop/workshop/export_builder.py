@@ -1,6 +1,8 @@
 import csv
 import itertools
+import os.path
 import xml.etree.ElementTree as eT
+from settings.testing import OUTPUT_DIR
 
 
 class OrdersDataExportBuilder:
@@ -58,7 +60,8 @@ class OrdersDataExportBuilder:
                     eT.SubElement(p, "product_code").text = product["product"]
                     eT.SubElement(p, "qty").text = str(product["qty"])
                     eT.SubElement(p, "tolocation").text = product["tolocation"]
-        return eT.dump(document)
+        tree = eT.ElementTree(document)
+        return tree.write(os.path.join(OUTPUT_DIR, "export_as_xml.xml"))
 
     def export_grouped_by_location(self, format, group_by):
         if group_by not in self.ALLOWED_GROUPERS:

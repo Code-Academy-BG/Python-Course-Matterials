@@ -1,6 +1,6 @@
 import csv
 import itertools
-import os.path
+import os
 import xml.etree.ElementTree as eT
 
 from settings.testing import OUTPUT_DIR
@@ -61,7 +61,6 @@ class OrdersDataExportBuilder:
                     eT.SubElement(p, "product_code").text = product["product"]
                     eT.SubElement(p, "qty").text = str(product["qty"])
                     eT.SubElement(p, "tolocation").text = product["tolocation"]
-
         tree = eT.ElementTree(document)
         return tree.write(os.path.join(OUTPUT_DIR, "export_as_xml.xml"))
 

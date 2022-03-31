@@ -29,7 +29,7 @@ import requests
 
 class RequestsHandler:
     cmd = runserver.Command()
-    BASE_URL = f"http://127.0.0.1:{cmd.default_port}"
+    BASE_URL = f"http://0.0.0.0:7300"
     FILES_URL = "oop/api/orders/files"
     FILE_URL = "oop/api/orders/file"
 

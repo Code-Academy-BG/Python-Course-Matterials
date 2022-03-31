@@ -10,4 +10,4 @@ for results in rq.get_file(files[0]):
         timespan_handler.process_data(order_data)
 
 orders_processor = timespan_handler.get_orders_processor()
-orders_processor.export_grouped_by_location("csv", "location")
+orders_processor.export_grouped_by_location("xml", "location")

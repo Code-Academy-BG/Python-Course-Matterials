@@ -27,6 +27,19 @@ import requests
 from bs4 import BeautifulSoup
 
 
+class UnsuccessfulNewsRequest(ConnectionError):
+    def __init__(self, base_url, url):
+        super().__init__("UnsuccessfulNewsRequest error")
+        self.base_url = base_url
+        self.url = url
+
+    def get_not_responding_url(self):
+        return (
+            f"Base url ({self.base_url}) (server) seems to be inactive"
+            f" when trying to reach {self.url}"
+        )
+
+
 class RequestsHandler:
     BASE_URL = f"http://0.0.0.0:7300"
     FILES_URL = "oop/api/orders/files"
@@ -54,18 +67,29 @@ class RequestsHandler:
             yield next_response.json()["results"]
 
     def get_news_content(self, news_ulr):
-        response = requests.get(urljoin(self.BASE_URL, news_ulr), timeout=3)
+        factor_rates = {}
+
+        try:
+            try:
+                response = requests.get(urljoin(self.BASE_URL, news_ulr), timeout=3)
+            except:
+                raise UnsuccessfulNewsRequest(self.BASE_URL, news_ulr)
+        except UnsuccessfulNewsRequest as ex:
+            print(ex.get_not_responding_url())
+            return factor_rates
+
         response.raise_for_status()
+
         # if response.status_code == 200:
         #     print(response.text)
 
         parsed = BeautifulSoup(response.text, "html.parser")
-        factor_rates = {}
         rates = parsed.findAll("span", attrs={"class": "rate"})
         for r in rates:
             factor_name = " ".join(r.parent.text.split(" ")[:-1])
             factor_rates[factor_name] = r.text
         return factor_rates
+
 
     def get_news_factors(self):
         news_factor_rates = {}

@@ -14,9 +14,9 @@ class DictOfShortKeys(dict):
         super().__setitem__(key, value)
 
 
-short_key_dictionary = DictOfShortKeys()
-short_key_dictionary["This is too long name"] = "test"
-short_key_dictionary["Pesho"] = "Good name"
+# short_key_dictionary = DictOfShortKeys()
+# short_key_dictionary["This is too long name"] = "test"
+# short_key_dictionary["Pesho"] = "Good name"
 
 
 class OddsOnly(list):
@@ -24,7 +24,8 @@ class OddsOnly(list):
         if item % 2 != 0:
             super().append(item)
             return
-        raise ValueError("Only odd ints are acceptable")
+        raise
+        # raise ValueError("Only odd ints are acceptable")
 
 
 class EvensOnly(list):
@@ -35,10 +36,10 @@ class EvensOnly(list):
         raise ValueError("Only even ints are acceptable")
 
 
-evens_only = EvensOnly()
-while len(evens_only) < 100:
-    random_integer = random.randint(1, 100)
-    try:
-        evens_only.append(random_integer)
-    except ValueError:
-        continue
+# evens_only = EvensOnly()
+# while len(evens_only) < 100:
+#     random_integer = random.randint(1, 100)
+#     try:
+#         evens_only.append(random_integer)
+#     except ValueError:
+#         continue

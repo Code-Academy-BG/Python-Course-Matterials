@@ -28,6 +28,9 @@ class FruitSaladTests(unittest.TestCase):
     def test_salad_fruits_are_cubed(self):
         self.assertTrue(all(fruit.cubed for fruit in self.salad.fruit))
 
+    def test_fruits_count(self):
+        self.assertEqual(len(self.salad.fruit), 2)
+
 
 if __name__ == "__main__":
     unittest.main()

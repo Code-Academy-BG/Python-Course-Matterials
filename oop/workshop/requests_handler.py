@@ -90,7 +90,6 @@ class RequestsHandler:
             factor_rates[factor_name] = r.text
         return factor_rates
 
-
     def get_news_factors(self):
         news_factor_rates = {}
         for url in ["/frog-news", "/wolf-news", "/eagle-news"]:

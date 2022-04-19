@@ -10,19 +10,7 @@ def mock_response(*args, **kwargs):
             self.json = lambda: []
             self.status_code = 200
             self.raise_for_status = lambda: True
-    return MockResponse()
-
-
-class Response:
-    def __init__(self, *args, **kwargs):
-        self.json = lambda: []
-        self.status_code = 200
-        self.raise_for_status = lambda: True
-
-
-def mock_response_version_two(*args, **kwargs):
-    # Not working at this moment
-    return Mock(return_value=Response())
+    return MockResponse(*args, **kwargs)
 
 
 @patch("requests.get", side_effect=mock_response)

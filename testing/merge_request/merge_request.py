@@ -22,6 +22,7 @@ class MergeRequest:
         In other cases status should be Pending
         :return:
         """
+
         return
 
     def upvote(self, by_user):
